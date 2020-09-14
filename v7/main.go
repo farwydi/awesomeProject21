@@ -1,7 +1,6 @@
 package main
 
 import (
-	"bytes"
 	"crypto/rand"
 	"fmt"
 	"github.com/eknkc/basex"
@@ -26,11 +25,8 @@ func main() {
 
 	botName := "super-long-name-for-bot"
 
-	buf := bytes.NewBuffer(nil)
-	t := make([]byte, 2)
-	checkWriteErr(rand.Read(t))
-	checkWriteErr(buf.Write(t))
-	payload := buf.Bytes()
+	payload := make([]byte, 2)
+	checkWriteErr(rand.Read(payload))
 
 	finalURL := enc.Encode(payload)
 	fmt.Println(finalURL, "hash enc")
